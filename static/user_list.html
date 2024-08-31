@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body>
+<ol id="user-list">
+
+</ol>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $.get(
+        "/user_list",
+        function (response) {
+            if (response && response['code'] === 200) {
+                const usernames = response['data'];
+                for (let username of usernames) {
+                    const usernameElt = $(`<li>${username}</li>`);
+                    $("#user-list").append(usernameElt);
+                }
+            } else {
+                alert(response['msg']);
+            }
+        }
+    );
+
+
+</script>
+</body>
+</html>

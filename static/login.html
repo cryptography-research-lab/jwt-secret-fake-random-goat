@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form name="login-form" onsubmit="return login()">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input name="username" id="username"></td>
+        </tr>
+        <tr>
+            <td>Passwd:</td>
+            <td><input name="passwd" id="passwd"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Login</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<p id="login-result"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    function login() {
+        const username = $("#username").val();
+        const passwd = $("#passwd").val();
+        $.get(
+            `/login?username=${username}&passwd=${passwd}`,
+            function (response) {
+                if (response && response['code'] === 200) {
+                    $("#login-result").html('<span style="color:green;">login success</span>');
+                    localStorage.setItem('token', response['data']);
+                } else {
+                    $("#login-result").html('<span style="color:red;">login failed: ' + response['msg']+ '</span>');
+                }
+            }
+        );
+        return false;
+    }
+</script>
+</body>
+</html>

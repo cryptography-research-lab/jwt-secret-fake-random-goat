@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form name="register-form" onsubmit="return register()">
+    <table>
+        <tr>
+            <td>Username:</td>
+            <td><input name="username" id="username"></td>
+        </tr>
+        <tr>
+            <td>Passwd:</td>
+            <td><input name="passwd" id="passwd"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Register</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<p id="register-result"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+    function register() {
+
+        const username = $("#username").val();
+        const passwd = $("#passwd").val();
+        $.get(
+            `/register?username=${username}&passwd=${passwd}`,
+            function (response) {
+                if (response && response['code'] === 200) {
+                    $("#register-result").html('<span style="color:green;">register success</span>');
+                } else {
+                    $("#register-result").html(`<span style="color:red;">register failed: ${response['msg']}</span>`);
+                }
+            }
+        );
+
+        return false;
+    }
+
+
+</script>
+</body>
+</html>

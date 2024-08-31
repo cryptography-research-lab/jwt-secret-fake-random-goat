@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flag</title>
+</head>
+<body>
+<p id="flag-result"></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    const token = localStorage.getItem("token");
+    if (!token) {
+        $("#flag-result").html('<span style="color: red;">not login, <a href="login.html">Go!</span>');
+    } else {
+        $.get(
+            `/flag?token=${token}`,
+            function (response) {
+                if (response && response['code'] === 200) {
+                    $("#flag-result").html(`<span style="color:green;">${response['data']}</span>`);
+                } else {
+                    $("#flag-result").html(`<span style="color:red;">get flag failed: ${response['msg']}</span>`);
+                }
+            }
+        );
+    }
+
+</script>
+</body>
+</html>
