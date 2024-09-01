@@ -42,7 +42,7 @@ func flag(c echo.Context) error {
 	} else {
 		return c.JSON(200, models.Response{
 			Code: 403,
-			Msg:  "who are you?",
+			Msg:  "who are you? only " + dal.FlagUserName + " can see the flag!",
 		})
 	}
 
