@@ -20,10 +20,11 @@ func Run() {
 	//e.Use(responseHeaderServerTime())
 
 	// Routes
-	e.GET("/", hello)
+	e.GET("/", homePage)
 	e.GET("/register", register)
 	e.GET("/login", login)
 	e.GET("/user_list", userList)
+	e.GET("/server_info", serverInfo)
 	e.GET("/flag", flag)
 
 	// Start server
@@ -31,7 +32,7 @@ func Run() {
 
 }
 
-// Handler
-func hello(c echo.Context) error {
+// 主页
+func homePage(c echo.Context) error {
 	return c.Redirect(301, "static/index.html")
 }

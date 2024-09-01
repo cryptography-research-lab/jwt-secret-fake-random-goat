@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server Information</title>
+</head>
+<body>
+<p id="server-information"></p>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+    (function showServerInformation() {
+        $.get(
+            '/server_info',
+            function (response) {
+                if (response && response['code'] === 200) {
+                    $("#server-information").append($(`<p>Server Bootstrap Time: ${response['data']['bootstrap_time']}</p>`));
+                    $("#server-information").append($(`<p>Golang SDK Version: ${response['data']['golang_sdk_version']}</p>`));
+                } else {
+                    $("#server-information").html('<span style="color:red;">Get server information failed: ' + response['msg'] + '</span>');
+                }
+            }
+        );
+    })();
+</script>
+</body>
+</html>
