@@ -79,6 +79,7 @@ http://127.0.0.1:10086/
 
 玩得开心！
 
-# 四、writeup
-TODO 待补充 
-脚本见：./writeup/main.go
+# 四、writeup 
+脚本见：https://github.com/cryptography-research-lab/jwt-secret-fake-random-goat/blob/main/writeup/main.go
+
+既然看到了，来补充个writeup吧，提个pr我来merge ：）
