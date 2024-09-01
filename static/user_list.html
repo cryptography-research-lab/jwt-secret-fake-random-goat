@@ -16,7 +16,9 @@
             if (response && response['code'] === 200) {
                 const usernames = response['data'];
                 for (let username of usernames) {
-                    const usernameElt = $(`<li>${username}</li>`);
+                    const usernameElt = document.createElement("li");
+                    // 原生DOM，避免xss
+                    usernameElt.textContent = username;
                     $("#user-list").append(usernameElt);
                 }
             } else {
