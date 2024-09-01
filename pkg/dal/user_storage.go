@@ -3,6 +3,8 @@ package dal
 import (
 	"fmt"
 	"github.com/cryptography-research-lab/jwt-secret-fake-random-goat/pkg/util"
+	// 确保另一个包先初始化，先调用随机数函数
+	_ "github.com/cryptography-research-lab/jwt-secret-fake-random-goat/pkg/config"
 )
 
 // 用于存储用户名和密码

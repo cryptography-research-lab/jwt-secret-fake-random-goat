@@ -29,3 +29,7 @@ http://127.0.0.1:10086/
 - 你需要伪造 CC11001100 的身份凭证访问http://127.0.0.1:10086/flag.html页面，才能查看到flag
 
 玩得开心！
+
+# 四、writeup
+TODO 待补充 
+脚本见：./writeup/main.go
