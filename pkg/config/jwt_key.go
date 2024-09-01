@@ -8,5 +8,6 @@ import (
 var JwtSecret = []byte(util.Random(20))
 
 func init() {
-	print("JWT secret initialized: " + string(JwtSecret))
+	// 不要偷看 
+	//print("JWT secret initialized: " + string(JwtSecret))
 }
