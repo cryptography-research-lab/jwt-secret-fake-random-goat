@@ -11,22 +11,62 @@
 提示：弱PRNG攻击！
 # 二、启动服务
 
-## 方式一：下载预编译文件
+## 2.1 获取可执行文件 
 
-## 方式二：自行编译
+### 方式一：下载预编译文件
 
-先编译：
-```bash
-go build main.go
-```
-然后执行编译产物：
-```bash
-./main
-```
-打开浏览器：
+在Release页面下载自己系统对应的编译好的二进制文件：
+
 ```text
+https://github.com/cryptography-research-lab/jwt-secret-fake-random-goat/releases
+```
+
+### 方式二：自行编译
+
+自行编译需要安装了Golang，克隆仓库：
+
+```bash
+git clone https://github.com/cryptography-research-lab/jwt-secret-fake-random-goat.git
+```
+
+进入克隆的仓库，编译源代码：
+
+```bash
+go build
+```
+
+然后执行编译产物：
+
+```bash
+./jwt-secret-fake-random-goat
+```
+
+## 2.2 启动服务
+
+执行看一下用法：
+
+![image-20240902014606069](./README.assets/image-20240902014606069.png)
+
+需要关注的就是server参数：
+
+![image-20240902014628403](./README.assets/image-20240902014628403.png)
+
+启动Web Server，端口可以不指定，默认端口为10086：
+
+```bash
+./jwt-secret-fake-random-goat server --port 10086
+```
+
+启动成功： 
+
+![image-20240902014713354](./README.assets/image-20240902014713354.png)
+
+然后打开浏览器地址查看：
+
+```bash
 http://127.0.0.1:10086/
 ```
+
 看到如下界面说明启动成功了：
 
 ![image-20240902011615389](./README.assets/image-20240902011615389.png)

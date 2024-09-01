@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func Run(port int) {
+func Run(port uint) {
 
 	// Echo instance
 	e := echo.New()
@@ -29,7 +29,7 @@ func Run(port int) {
 	e.GET("/flag", flag)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":" + strconv.Itoa(port)))
+	e.Logger.Fatal(e.Start(":" + strconv.Itoa(int(port))))
 
 }
 
