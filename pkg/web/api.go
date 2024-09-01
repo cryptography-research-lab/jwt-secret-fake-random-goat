@@ -3,9 +3,10 @@ package web
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"strconv"
 )
 
-func Run() {
+func Run(port int) {
 
 	// Echo instance
 	e := echo.New()
@@ -28,7 +29,7 @@ func Run() {
 	e.GET("/flag", flag)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":10086"))
+	e.Logger.Fatal(e.Start(":" + strconv.Itoa(port)))
 
 }
 
