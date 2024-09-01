@@ -10,7 +10,7 @@ import (
 // 查看平台上当前注册的所有用户
 func userList(c echo.Context) error {
 	usernames := dal.ListUsername()
-	// 让用户名保持顺序，看起来更和谐一些 
+	// 让用户名保持顺序，看起来更和谐一些
 	sort.Strings(usernames)
 	return c.JSON(200, models.Response{
 		Code: 200,
