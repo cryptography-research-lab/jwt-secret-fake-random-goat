@@ -4,6 +4,7 @@ go 1.22.2
 
 require (
 	github.com/fatih/color v1.17.0
+	github.com/golang-infrastructure/go-StringBuilder v0.0.0-20221115030116-99376cd5eee4
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/ivanpirog/coloredcobra v1.0.1
 	github.com/labstack/echo/v4 v4.12.0
@@ -11,7 +12,6 @@ require (
 )
 
 require (
-	github.com/golang-infrastructure/go-StringBuilder v0.0.0-20221115030116-99376cd5eee4 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

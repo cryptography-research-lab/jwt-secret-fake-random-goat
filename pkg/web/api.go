@@ -3,6 +3,7 @@ package web
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/cryptography-research-lab/jwt-secret-fake-random-goat/static"
 	"strconv"
 )
 
@@ -15,8 +16,10 @@ func Run(port uint) {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.StaticWithConfig(middleware.StaticConfig{
-		Root:   "static",
-		Browse: true,
+		Root:       "/",
+		Browse:     true,
+		HTML5:      true,
+		Filesystem: static.GetStaticFS(),
 	}))
 	//e.Use(responseHeaderServerTime())
 
@@ -35,5 +38,5 @@ func Run(port uint) {
 
 // 主页
 func homePage(c echo.Context) error {
-	return c.Redirect(301, "static/index.html")
+	return c.Redirect(301, "/index.html")
 }

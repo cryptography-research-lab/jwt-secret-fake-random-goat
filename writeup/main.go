@@ -82,7 +82,7 @@ func crackJwtSecret(start, end, tokenString string) string {
 	// task consumer
 	consumerWg := &sync.WaitGroup{}
 	isFindSecret := &atomic.Bool{}
-	jwtSecret := &atomic.Pointer[string]{}
+	github.com/cc11001100/github/cryptography-research-lab/jwt-secret-fake-random-goat/pkg/cmd
 	for i := 0; i < 100; i++ {
 		consumerWg.Add(1)
 		go func() {
