@@ -1,0 +1,54 @@
+name: build
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23'
+
+      - name: Build for Linux
+        run: |
+          GOOS=linux GOARCH=amd64 go build -o jwt-secret-fake-random-goat-linux-amd64 .
+          GOOS=linux GOARCH=arm64 go build -o jwt-secret-fake-random-goat-linux-arm64 .
+
+      - name: Build for Windows
+        run: |
+          GOOS=windows GOARCH=amd64 go build -o jwt-secret-fake-random-goat-windows-amd64.exe .
+
+      - name: Build for macOS
+        run: |
+          GOOS=darwin GOARCH=amd64 go build -o jwt-secret-fake-random-goat-darwin-amd64 .
+          GOOS=darwin GOARCH=arm64 go build -o jwt-secret-fake-random-goat-darwin-arm64 .
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            jwt-secret-fake-random-goat-linux-amd64
+            jwt-secret-fake-random-goat-linux-arm64
+            jwt-secret-fake-random-goat-windows-amd64.exe
+            jwt-secret-fake-random-goat-darwin-amd64
+            jwt-secret-fake-random-goat-darwin-arm64
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

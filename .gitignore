@@ -13,9 +13,16 @@
 *.dylib
 main
 jwt-secret-fake-random-goat
+jwt-secret-fake-random-goat-*
 test-build
 *.test
 *.out
+
+# Release 编译产物
+*-darwin-amd64
+*-linux-amd64
+*-windows-amd64
+*-release-*
 
 # Go 模块缓存
 go.work
