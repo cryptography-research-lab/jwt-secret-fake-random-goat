@@ -13,29 +13,13 @@ builds:
     ignore:
       - goos: windows
         goarch: arm64
-    id: "jwt-secret-fake-random-goat"
     binary: jwt-secret-fake-random-goat
-    main: ./main.go
 
 archives:
   - name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
-    format_overrides:
-      - goos: windows
-        format: zip
-      - goos: linux
-        format: tar.gz
-      - goos: darwin
-        format: tar.gz
+    formats:
+      - tar.gz
+      - zip
 
 checksum:
   name_template: 'checksums.txt'
-
-snapshot:
-  name_template: "{{ .Tag }}-next"
-
-changelog:
-  sort: asc
-  filters:
-    exclude:
-      - '^docs:'
-      - '^test:'

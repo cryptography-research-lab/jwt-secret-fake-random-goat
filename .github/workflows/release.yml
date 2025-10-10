@@ -4,13 +4,13 @@ on:
   push:
     tags:
       - 'v*'
-  release:
-    types: [ created, edited ]
 
 jobs:
   release:
     name: Build and Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
