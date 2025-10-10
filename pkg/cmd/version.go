@@ -12,7 +12,7 @@ var versionCmd = &cobra.Command{
 	Short: "Show version information.",
 	Long:  `Show version information.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Current version: v0.1")
+		fmt.Println("Current version: v0.2")
 	},
 	TraverseChildren: true,
 }
