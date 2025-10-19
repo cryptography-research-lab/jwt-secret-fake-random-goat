@@ -17,6 +17,11 @@ jwt-secret-fake-random-goat-*
 test-build
 *.test
 *.out
+*.prof
+*.cover
+coverage.out
+c.out
+*test.out
 
 # Release 编译产物
 *-darwin-amd64

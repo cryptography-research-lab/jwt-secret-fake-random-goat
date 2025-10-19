@@ -69,6 +69,58 @@ http://127.0.0.1:10086/
 
 看到如下界面说明启动成功了：
 
+## 2.3 使用Docker部署
+
+### 使用Docker Compose（推荐）
+
+确保已安装Docker和Docker Compose，然后在项目根目录执行：
+
+```bash
+# 启动服务（后台运行）
+docker-compose up -d
+
+# 查看服务状态
+docker-compose ps
+
+# 查看实时日志
+docker-compose logs -f
+
+# 停止服务
+docker-compose down
+
+# 停止并删除相关卷（完全清理）
+docker-compose down -v
+```
+
+服务将在后台启动，默认端口为10086。启动后可通过 http://localhost:10086/ 访问。
+
+### 使用Docker直接构建运行
+
+```bash
+# 构建镜像
+docker build -t jwt-secret-fake-random-goat .
+
+# 运行容器
+docker run -d -p 10086:10086 --name jwt-secret-fake-random-goat jwt-secret-fake-random-goat
+
+# 查看日志
+docker logs -f jwt-secret-fake-random-goat
+
+# 停止并删除容器
+docker stop jwt-secret-fake-random-goat
+docker rm jwt-secret-fake-random-goat
+
+# 删除镜像（可选）
+docker rmi jwt-secret-fake-random-goat
+```
+
+### Docker部署注意事项
+
+1. **端口映射**：默认使用10086端口，可通过修改docker-compose.yml或使用`-p`参数自定义
+2. **数据持久化**：当前用户数据存储在内存中，容器重启后会重置
+3. **健康检查**：Docker Compose配置了健康检查，确保服务正常运行
+4. **生产环境**：建议添加资源限制和安全配置
+
 ![image-20240902011615389](./README.assets/image-20240902011615389.png)
 
 # 三、游戏规则
