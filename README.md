@@ -71,7 +71,26 @@ http://127.0.0.1:10086/
 
 ## 2.3 使用Docker部署
 
-### 使用Docker Compose（推荐）
+### 从Docker Hub快速部署（推荐）
+
+最简单的方式是直接拉取已发布的Docker镜像：
+
+```bash
+# 拉取镜像
+docker pull cc11001100/jwt-secret-fake-random-goat:latest
+
+# 运行容器
+docker run -d -p 10086:10086 --name jwt-secret-fake-random-goat cc11001100/jwt-secret-fake-random-goat:latest
+
+# 查看日志
+docker logs -f jwt-secret-fake-random-goat
+
+# 停止并删除容器
+docker stop jwt-secret-fake-random-goat
+docker rm jwt-secret-fake-random-goat
+```
+
+### 使用Docker Compose（推荐本地开发）
 
 确保已安装Docker和Docker Compose，然后在项目根目录执行：
 
@@ -94,7 +113,7 @@ docker-compose down -v
 
 服务将在后台启动，默认端口为10086。启动后可通过 http://localhost:10086/ 访问。
 
-### 使用Docker直接构建运行
+### 本地构建Docker镜像
 
 ```bash
 # 构建镜像
