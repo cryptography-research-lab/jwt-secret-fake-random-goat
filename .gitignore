@@ -74,3 +74,31 @@ config.yml
 *.bak
 *.backup
 *_backup/
+
+# 安全相关文件
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+private_keys/
+jwt_keys/
+secrets/
+
+# Go 相关
+*.sum
+go.sum
+modd.conf
+
+# 性能分析文件
+*.cpu
+*.mem
+*.trace
+
+# 测试覆盖率
+coverage.html
+coverage.xml
+
+# Air live reload
+.air.toml
+tmp/
